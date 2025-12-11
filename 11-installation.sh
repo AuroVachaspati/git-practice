@@ -28,7 +28,7 @@ then
     fi
 
 else
-    echo "Git is already installed, nothing to do.."
+    echo "Git is already installed, will check for latest version"
 fi
 
 
