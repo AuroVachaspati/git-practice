@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo ./script.sh
 
 USERID=$(id -u)
 #echo "Your user ID is: $USERID"
