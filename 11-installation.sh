@@ -33,21 +33,26 @@ fi
 
 
 
-
-#Check whether git is the latest version
-installed=$(git --version 2>/dev/null | awk '{print $3}')
-repo=$(dnf info git 2>/dev/null | awk '/Version/ {print $3}')
-
-echo "Installed Git : ${installed:-none}"
-echo "Repo Git      : $repo"
+echo "Checking Git status..."
 echo
 
+# Check if git is installed
+if ! command -v git &> /dev/null; then
+    echo "Git is not installed. Installing..."
+    sudo dnf install -y git
+    exit 0
+fi
 
-# If versions differ → update
-if [ "$installed" != "$repo" ]; then
-    echo "Updating Git..."
-    sudo dnf update -y git
-    echo "Updated Git to: $(git --version | awk '{print $3}')"
-else
+# Show current version
+current_version=$(git --version)
+echo "Current: $current_version"
+
+# Check for updates (dnf check-update returns 0 if no updates, 100 if updates available)
+if sudo dnf check-update git &> /dev/null; then
     echo "Git is already up to date."
+else
+    echo "Update available. Updating Git..."
+    sudo dnf update -y git
+    echo
+    echo "Updated: $(git --version)"
 fi
