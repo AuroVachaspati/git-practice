@@ -42,12 +42,6 @@ echo "Installed Git : ${installed:-none}"
 echo "Repo Git      : $repo"
 echo
 
-# If not installed
-if [ -z "$installed" ]; then
-    echo "Git is not installed. Installing..."
-    sudo dnf install -y git
-    exit 0
-fi
 
 # If versions differ → update
 if [ "$installed" != "$repo" ]; then
