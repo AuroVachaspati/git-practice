@@ -8,4 +8,4 @@ FRUITS=("apple" "banana")
 echo first fruit is:  ${FRUITS[0]}
 echo second fruit is: ${FRUITS[1]}
 
-echo all fruits: ${FRUITS[@,]}
+echo all fruits: ${FRUITS[@]}
