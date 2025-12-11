@@ -1,34 +1,32 @@
 #!/bin/bash
 
-
-
 USERID=$(id -u)
-#echo "Your user ID is: $USERID"
+#echo "User ID is: $USERID"
 
 
 if [ $USERID -ne 0 ]
 then
-    echo "Please run the script with root privileges."
+    echo "Please run this script with root priveleges"
     exit 1
 fi
 
-#Check if git in installed
 
-dnf list installed git
+
+dnf list installed git # Just checking whether installed or not
+
 if [ $? -ne 0 ]
 then
-    echo "Git is not installed, going to install it now.."
-    dnf install git -y
-    
+    echo "Git is not installed, going to install it.."
+    dnf install git -y # here installing
+
     if [ $? -ne 0 ]
     then
-        echo "Git installation failed. Please look into it."
+        echo "Git installation is not success...check it"
         exit 1
     else
-        echo "Git installed successfully."
+        echo "Git installation is success"
     fi
+    
 else
-    echo "Git is already installed."
+    echo "Git is already installed, nothing to do.."
 fi
-
-
