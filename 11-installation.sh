@@ -26,7 +26,34 @@ then
     else
         echo "Git installation is success"
     fi
-    
+
 else
     echo "Git is already installed, nothing to do.."
+fi
+
+
+
+
+#Check whether git is the latest version
+installed=$(git --version 2>/dev/null | awk '{print $3}')
+repo=$(dnf info git 2>/dev/null | awk '/Version/ {print $3}')
+
+echo "Installed Git : ${installed:-none}"
+echo "Repo Git      : $repo"
+echo
+
+# If not installed
+if [ -z "$installed" ]; then
+    echo "Git is not installed. Installing..."
+    sudo dnf install -y git
+    exit 0
+fi
+
+# If versions differ → update
+if [ "$installed" != "$repo" ]; then
+    echo "Updating Git..."
+    sudo dnf update -y git
+    echo "Updated Git to: $(git --version | awk '{print $3}')"
+else
+    echo "Git is already up to date."
 fi
