@@ -2,3 +2,4 @@
 
 
 Date=$(date)
+echo "today's date is: $Date +%F"
