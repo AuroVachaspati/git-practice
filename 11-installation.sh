@@ -1,6 +1,8 @@
 #!/bin/bash
 
+chmod +x 11-installation.sh
 sudo ./11-installation.sh
+
 
 USERID=$(id -u)
 #echo "Your user ID is: $USERID"
