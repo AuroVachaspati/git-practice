@@ -1,7 +1,5 @@
 #!/bin/bash
 
-chmod +x 11-installation.sh
-sudo ./11-installation.sh
 
 
 USERID=$(id -u)
@@ -18,6 +16,13 @@ if [ $? -ne 0 ]
 then
     echo "Git is not installed, going to install it now.."
     dnf install git -y
+    if [ $? -ne 0 ]
+    then
+        echo "Git installation failed. Please look into it."
+        exit 1
+    else
+        echo "Git installed successfully."
+    fi
     echo "Git installation completed."
 else
     echo "Git is already installed."
