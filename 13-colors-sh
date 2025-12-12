@@ -18,10 +18,10 @@ CHECK_ROOT(){
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 is...$R FAILED $R"
+        echo -e "$2 is...$R FAILED $R"
         exit 1
     else
-        echo "$2 is...$G SUCCESS $G"
+        echo -e "$2 is...$G SUCCESS $G"
     fi
 }
 
@@ -35,7 +35,7 @@ then
     dnf install git -y
     VALIDATE $? "Installing Git"
 else
-    echo " $Y Git is already installed, nothing to do.. $Y "
+    echo -e "$Y Git is already installed, nothing to do.. $Y"
 fi
 
 dnf list installed mysql
