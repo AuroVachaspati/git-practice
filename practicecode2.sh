@@ -18,7 +18,7 @@ then
         #LEVEL3 - Check for First Class (>90)
         if [ "$marks" -gt 90 ]
         then 
-            echo "Congratulations! FIRST CLASS with $marks marks! 🏆"
+            echo "Congratulations! FIRST CLASS with $marks marks! "
             
             #LEVEL4 - Check for Outstanding (>95)
             if [ "$marks" -gt 95 ]
